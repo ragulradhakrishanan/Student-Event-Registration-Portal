@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Noto+Sans+Tamil:wght@400;500;700&display=swap">
+<title>Campus Events Desk</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="progress" id="progress"></div><div class="spot" id="spot"></div>
+<div class="wrap">
+  <header class="mast" id="mast"><canvas class="net" id="net" aria-hidden="true"></canvas><div class="blob b1"></div><div class="blob b2"></div><div class="topbar"><div class="brand"><img class="logo" src="logo.png" alt="College emblem" width="60" height="51"><div class="brand-t"><p class="ta cname">மாண்புமிகு டாக்டர் புரட்சித் தலைவர் எம்.ஜி.ஆர். அரசு கலை மற்றும் அறிவியல் கல்லூரி</p><p class="college">Manbumigu Dr. Puratchi Thalaivar M.G.R. Govt. Arts &amp; Science College, Kattumannarkoil - 608302</p></div></div><button type="button" class="themebtn" id="themeBtn" aria-label="Switch theme"></button></div><div class="mast-in"><div class="mast-text">
+        <h1>Campus <span>Events</span> Desk</h1>
+    <p class="tag" id="tag">Kalloori Kalai Thiruvizha 2026</p>
+    </div>
+    <div class="scene" aria-hidden="true"><div class="rig" id="rig"><div class="float"><div class="lyr l1"></div><div class="lyr l2"></div><div class="ticket"><small>Admit one</small><b>Campus Event Pass</b><i class="code"></i></div></div></div></div>
+    </div>
+  </header>
+
+  <div id="nextUp"></div>
+  <div class="ticker" id="ticker" aria-label="Upcoming events"></div>
+
+  <div class="layout"><div class="main">
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-events" aria-selected="true" data-view="events">Events</button>
+    <button class="tab" role="tab" id="tab-mine" aria-selected="false" data-view="mine">My registrations<span class="n" id="mineCount">0</span></button>
+    <button class="tab" role="tab" id="tab-staff" aria-selected="false" data-view="staff">Staff</button>
+    <button class="tab tab-insights" role="tab" id="tab-insights" aria-selected="false" data-view="insights">Insights</button>
+  </div>
+
+  <section id="eventsView">
+    <details class="info">
+      <summary>About Kalloori Kalai Thiruvizha</summary>
+      <div class="info-b">
+        <p>State-level cultural arts festival of the Tamil Nadu Higher Education Department (G.O (D) No. 148) for students of 252 government colleges and technical institutions.</p>
+        <div class="tiers" aria-label="Competition levels"><span class="tier now">College level</span><span class="ar">&rarr;</span><span class="tier">University level</span><span class="ar">&rarr;</span><span class="tier">State level</span></div>
+        <p><b>Free for students.</b> Each student can take part in up to 3 events.</p>
+        <ul class="eight">
+          <li style="--cc:#a83a2a"><i></i><span><b>Fine Arts</b>: painting, drawing, lyrics writing with tunes</span></li>
+          <li style="--cc:#1f5fa8"><i></i><span><b>Literature</b>: poetry, short story, essay</span></li>
+          <li style="--cc:#6b3fb5"><i></i><span><b>Music</b>: solo, instrumental, group</span></li>
+          <li style="--cc:#d6336c"><i></i><span><b>Performing Arts</b>: dance, folk arts, theatre</span></li>
+          <li style="--cc:#8a5a00"><i></i><span><b>Speech &amp; Debate</b>: oratory, budget battle, discussion</span></li>
+          <li style="--cc:#0b7f86"><i></i><span><b>Expression</b>: stand-up comedy, monologue</span></li>
+          <li style="--cc:#1d7a45"><i></i><span><b>Eco Arts</b>: eco-themed projects and displays</span></li>
+          <li style="--cc:#3b4cc0"><i></i><span><b>Innovation</b>: treasure hunt, martial arts, tech-creative showcase</span></li>
+        </ul>
+      </div>
+    </details>
+    <div class="filters">
+      <div class="field">
+        <label for="q">Search by name</label>
+        <input class="input" id="q" type="search" placeholder="Hackathon, Onam, quiz..." autocomplete="off">
+      </div>
+      <div class="chips" id="cats" role="group" aria-label="Category"></div>
+      <div class="rowauto">
+        <div class="field">
+          <label for="dateMode">Date</label>
+          <select class="input" id="dateMode">
+            <option value="any">Any date</option>
+            <option value="today">Today</option>
+            <option value="week">Next 7 days</option>
+            <option value="month">This month</option>
+            <option value="pick">Pick a date</option>
+          </select>
+        </div>
+        <div class="field" id="datePickField" hidden>
+          <label for="dateVal">On</label>
+          <input class="input" id="dateVal" type="date">
+        </div>
+        <div class="field">
+          <label for="sort">Sort by</label>
+          <select class="input" id="sort"><option value="soon">Soonest first</option><option value="left">Most seats left</option><option value="popular">Most popular</option></select>
+        </div>
+      </div>
+    </div>
+    <p class="count-line" id="countLine"></p>
+    <ul class="list" id="eventList"></ul>
+  </section>
+
+  <section id="staffView" hidden>
+    <div class="filters">
+      <div class="field"><label for="sq">Search staff</label><input class="input" id="sq" type="search" placeholder="Name, department or role" autocomplete="off"></div>
+      <div class="chips" id="sdepts" role="group" aria-label="Department"></div>
+    </div>
+    <ul class="list slist" id="staffList"></ul>
+    <h3 class="sech">Office staff</h3>
+    <ul class="office" id="office"></ul>
+  </section>
+
+  <section id="mineView" hidden>
+    <div class="field" style="margin-bottom:14px">
+      <label for="myEmail">Your college email</label>
+      <input class="input" id="myEmail" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com">
+    </div>
+    <div class="myreg" id="myList"></div>
+  </section>
+
+  </div>
+  <aside class="aside" id="insights" aria-label="Insights"></aside>
+  </div>
+
+  <div class="foot ta"><div class="footbrand"><img class="emb" src="emblem.png" alt="Tamil Nadu Government emblem" width="48" height="47"><div><b>மாண்புமிகு டாக்டர் புரட்சித் தலைவர் எம்.ஜி.ஆர். அரசு கலை மற்றும் அறிவியல் கல்லூரி</b><br>காட்டுமன்னார் கோயில் - 608302</div></div><p>Departments: Tamil, English, Commerce, Maths, Computer Science</p><p>Kalloori Kalai Thiruvizha 2026, college level</p><p class="small" id="storeNote">Your registrations are kept on this device.</p></div>
+</div>
+
+<div id="sheetRoot"></div>
+<div id="ticketRoot"></div>
+<button type="button" class="totop" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
